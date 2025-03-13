@@ -1,8 +1,10 @@
 import Lottie from 'lottie-react';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import registerAnimation from '../../assets/animation/register.json'
+import AuthContext from '../../context/AuthContext';
 const Register = () => {
   const [error ,setError] = useState({})
+  const {createUser} = useContext(AuthContext)
   const handleRegister =(e)=>{
   e.preventDefault()
   const email = e.target.email.value;
@@ -13,7 +15,12 @@ const Register = () => {
     setError({password:'Password at least one upperCase ,one lowerCase,and 6 charecter or long'});
     return
   }
-  console.log(email,password)
+  console.log(email,password);
+  createUser(email,password)
+  .then(result=>{
+    console.log(result)
+  })
+
   }
     return (
         <div className="hero bg-base-200 min-h-screen">

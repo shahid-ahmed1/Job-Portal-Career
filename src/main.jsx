@@ -9,6 +9,12 @@ import {
 import Home from './pages/Home/Home.jsx';
 import MainLayout from './layout/MainLayout/MainLayout.jsx';
 import Register from './pages/Register/Register.jsx';
+import AuthProvider from './context/AuthProvider.jsx';
+import Login from './pages/Login/Login.jsx';
+import CardDetails from './pages/Home/CardDetails.jsx';
+import PrivateRoute from './firebase/PrivateRoute.jsx';
+import Application from './pages/Home/Application.jsx';
+import MyApplication from './pages/Home/MyApplication.jsx';
 
 const router = createBrowserRouter([
   {
@@ -17,17 +23,40 @@ const router = createBrowserRouter([
     children:[
       {
         path:'/',
-        element:<Home></Home>
+        element:<Home></Home>,
+        loader:()=> fetch(`http://localhost:3000/jobs`)
+      },
+      {
+        path:'/jobsApply/:id',
+        element:<PrivateRoute><Application></Application></PrivateRoute>,
+        
+      },
+      {
+        path:'/jobs/:id',
+        element:<PrivateRoute><CardDetails></CardDetails></PrivateRoute>,
+        loader:({params})=> fetch(`http://localhost:3000/jobs/${params.id}`)
+      },
+      {
+        path:'/my-application',
+        element:<PrivateRoute><MyApplication></MyApplication></PrivateRoute>,
+       
       },
       {
         path:'/register',
         element:<Register></Register>
+      },
+      {
+        path:'/login',
+        element:<Login></Login>
       }
     ]
   },
 ]);
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-      <RouterProvider router={router} />
+    <AuthProvider>
+    <RouterProvider router={router} />
+    </AuthProvider>
+  
   </StrictMode>,
 )

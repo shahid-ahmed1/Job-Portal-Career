@@ -1,9 +1,12 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import loginAnimation  from '../../assets/animation/login.json';
 import Lottie from 'lottie-react';
 import AuthContext from '../../context/AuthContext';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { data, useLocation, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 const Login = () => {
+  // const [axios,setAxios]=useState();
+
     const [error ,setError] = useState({})
     const { signInUser} = useContext(AuthContext)
     const location = useLocation();
@@ -15,8 +18,13 @@ const Login = () => {
         const password = e.target. password.value;
         signInUser(email,password)
         .then(result=>{
-            console.log(result)
-            navigate(form)
+          
+          // const user={email:result.user.email}
+        //  const {data} = axios.post('http://localhost:5000/jwt',user,{withCredentials:true})
+        //  .then(res=>{
+        //   console.log(res.data)
+        //  })
+            // navigate(form)
         })
         .catch(err =>console.log(err))
     }

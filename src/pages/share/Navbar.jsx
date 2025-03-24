@@ -7,13 +7,19 @@ const Navbar = () => {
     const links =<>
    
 <li><NavLink to='/'>Home</NavLink></li>
-<li><NavLink to='/brands'>Brands</NavLink></li>
+{
+  user && <li><NavLink to='/add-job'>Add Job</NavLink></li>
+}
+
 
 
 {
   user &&  <li><NavLink to={`/my-application`}>My Application</NavLink></li>
 }
-<li><NavLink to='/about'>About Dev</NavLink></li>
+{
+  user && <li><NavLink to='/my-posted-jobs'>My Posted Jobs</NavLink></li>
+}
+
 
 </>
 const handleSignOut =()=>{

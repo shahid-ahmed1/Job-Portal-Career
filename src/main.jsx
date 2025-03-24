@@ -15,6 +15,9 @@ import CardDetails from './pages/Home/CardDetails.jsx';
 import PrivateRoute from './firebase/PrivateRoute.jsx';
 import Application from './pages/Home/Application.jsx';
 import MyApplication from './pages/Home/MyApplication.jsx';
+import AddJob from './pages/Home/AddJob.jsx';
+import MyPostedJobs from './pages/Home/MyPostedJobs.jsx';
+import VIewApplication from './pages/Home/VIewApplication.jsx';
 
 const router = createBrowserRouter([
   {
@@ -24,7 +27,7 @@ const router = createBrowserRouter([
       {
         path:'/',
         element:<Home></Home>,
-        loader:()=> fetch(`http://localhost:3000/jobs`)
+        // loader:()=> fetch(`http://localhost:3000/jobs`)
       },
       {
         path:'/jobsApply/:id',
@@ -34,12 +37,26 @@ const router = createBrowserRouter([
       {
         path:'/jobs/:id',
         element:<PrivateRoute><CardDetails></CardDetails></PrivateRoute>,
-        loader:({params})=> fetch(`http://localhost:3000/jobs/${params.id}`)
+        // loader:({params})=> fetch(`http://localhost:3000/jobs/${params.id}`)
       },
       {
         path:'/my-application',
         element:<PrivateRoute><MyApplication></MyApplication></PrivateRoute>,
        
+      },
+      {
+        path:'/add-job',
+        element:<PrivateRoute><AddJob></AddJob></PrivateRoute>,
+       
+      },
+      {
+        path:'/application/:job_id',
+        element:<PrivateRoute><VIewApplication></VIewApplication></PrivateRoute>,
+        // loader:({params})=>fetch(`http://localhost:5000//job-applications/jobs/${params.job_id}`)
+      },
+      {
+        path:'/my-posted-jobs',
+        element:<PrivateRoute><MyPostedJobs></MyPostedJobs></PrivateRoute>,
       },
       {
         path:'/register',

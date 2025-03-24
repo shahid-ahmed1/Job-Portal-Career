@@ -1,10 +1,21 @@
-import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useLoaderData, useParams } from 'react-router-dom';
 import { FaMapMarkerAlt, FaBriefcase, FaCalendarAlt, FaDollarSign } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 const CardDetails = () => {
-    const job = useLoaderData();
-    return (
+    // const job = useLoaderData();
+    const {id} = useParams();
+    console.log(id)
+     const [job ,setJobs] =useState([])
+      useEffect(()=>{
+        fetch(`http://localhost:5000/jobs/${id}`)
+        .then(res=>res.json())
+        .then(data=>{
+            setJobs(data)
+            console.log(data)
+        })
+      },[])
+     return (
         <div className='my-10'>
               <div className="max-w-lg mx-auto p-6 bg-white shadow-xl border border-gray-200 rounded-2xl hover:shadow-2xl transition duration-300">
       <div className="flex items-center gap-4 border-b pb-4 mb-4">

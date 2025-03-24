@@ -1,21 +1,34 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { data, useLoaderData } from 'react-router-dom';
 import AuthContext from '../../context/AuthContext';
+import axios from 'axios';
+import useAxousSequre from '../../hooks/UseAxousSequre';
 
 const MyApplication = () => {
     const { user} = useContext(AuthContext)
     const [users ,setUsers]= useState([])
+
+    const axiosSecure= useAxousSequre();
 useEffect(()=>{
-  fetch(`http://localhost:3000/job-application?email=${user.email}`)
-  .then(res=>res.json())
-  .then(data=>{
-    setUsers(data)
-  })
-},[user.email])
+
+  axiosSecure.get(`/job-application?email=${user?.email}`)
+  .then(res=> setUsers(res.data))
+  // axios.get(`http://localhost:5000/job-application?email=${user?.email}`,{withCredentials:true})
+  // .then(res=> {
+  //   setUsers(res.data)
+  //   console.log(res.data)
+  // })
+  // fetch(`http://localhost:5000/job-application?email=${user?.email}`)
+  // .then(res=>res.json())
+  // .then(data=>{
+  //   setUsers(data)
+  // })
+},[user])
     return (
         <div>
         {
-            users.map(job => <div key={job._id} className="overflow-x-auto">
+            users.map(job => 
+            <div key={job._id} className="overflow-x-auto">
                 <table className="table">
                   {/* head */}
                   <thead>
@@ -36,7 +49,8 @@ useEffect(()=>{
                           <div className="avatar">
                             <div className="mask mask-squircle h-12 w-12">
                               <img
-                                src={job.image}
+                                src={job?.
+                                  company_logo}
                                 alt="Avatar Tailwind CSS Component" />
                             </div>
                           </div>
@@ -53,7 +67,7 @@ useEffect(()=>{
                       </td>
                       <td>Purple</td>
                       <th>
-                        <button className="btn btn-ghost btn-xs">details</button>
+                        <button className="btn btn-ghost btn-xs">delate</button>
                       </th>
                     </tr>
                    

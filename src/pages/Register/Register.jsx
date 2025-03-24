@@ -2,6 +2,8 @@ import Lottie from 'lottie-react';
 import React, { useContext, useState } from 'react';
 import registerAnimation from '../../assets/animation/register.json'
 import AuthContext from '../../context/AuthContext';
+import axios from 'axios';
+import { data } from 'react-router-dom';
 const Register = () => {
   const [error ,setError] = useState({})
   const {createUser} = useContext(AuthContext)
@@ -18,7 +20,9 @@ const Register = () => {
   console.log(email,password);
   createUser(email,password)
   .then(result=>{
-    console.log(result)
+    // const user ={email:email}
+    // axios.post('http://localhost:3000/jwt',user)
+    // .then(data=>console.log(data.data))
   })
 
   }

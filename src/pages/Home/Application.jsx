@@ -14,14 +14,14 @@ const Application = () => {
         const resumeWeb = e.target.resumeWeb.value;
         const jobId = id;
         const appliEmail = user.email
-      const application ={jobId,appliEmail,linkedin,github,resumeWeb};
-      fetch(`http://localhost:3000/job-applications`,{
+      const jobApplication ={jobId,appliEmail,linkedin,github,resumeWeb};
+      fetch(`http://localhost:5000/job-applications`,{
         method:"POST",
         headers:{
           'content-type':'application/json'
         }
         ,
-        body:JSON.stringify(application)
+        body:JSON.stringify(jobApplication)
       })
       .then(res => res.json())
       .then(data => {
@@ -33,6 +33,9 @@ const Application = () => {
         });
        }
        navigate('/my-application')
+      })
+      .catch(error=>{
+        console.log(error.message)
       })
 
     }

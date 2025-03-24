@@ -8,7 +8,7 @@ const CardDetails = () => {
     console.log(id)
      const [job ,setJobs] =useState([])
       useEffect(()=>{
-        fetch(`http://localhost:5000/jobs/${id}`)
+        fetch(`https://job-portal-server-for-recruiter-part3-sand.vercel.app/jobs/${id}`)
         .then(res=>res.json())
         .then(data=>{
             setJobs(data)

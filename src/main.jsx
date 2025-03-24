@@ -52,7 +52,7 @@ const router = createBrowserRouter([
       {
         path:'/application/:job_id',
         element:<PrivateRoute><VIewApplication></VIewApplication></PrivateRoute>,
-        // loader:({params})=>fetch(`http://localhost:5000//job-applications/jobs/${params.job_id}`)
+        // loader:({params})=>fetch(`https://job-portal-server-for-recruiter-part3-sand.vercel.app//job-applications/jobs/${params.job_id}`)
       },
       {
         path:'/my-posted-jobs',

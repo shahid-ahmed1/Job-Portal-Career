@@ -20,7 +20,7 @@ const Login = () => {
         .then(result=>{
           
           // const user={email:result.user.email}
-        //  const {data} = axios.post('http://localhost:5000/jwt',user,{withCredentials:true})
+        //  const {data} = axios.post('https://job-portal-server-for-recruiter-part3-sand.vercel.app/jwt',user,{withCredentials:true})
         //  .then(res=>{
         //   console.log(res.data)
         //  })

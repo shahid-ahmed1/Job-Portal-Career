@@ -15,7 +15,7 @@ const Application = () => {
         const jobId = id;
         const appliEmail = user.email
       const jobApplication ={jobId,appliEmail,linkedin,github,resumeWeb};
-      fetch(`http://localhost:5000/job-applications`,{
+      fetch(`https://job-portal-server-for-recruiter-part3-sand.vercel.app/job-applications`,{
         method:"POST",
         headers:{
           'content-type':'application/json'

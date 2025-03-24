@@ -7,7 +7,7 @@ const VIewApplication = () => {
 
   const { job_id } = useParams();
   useEffect(() => {
-    fetch(`http://localhost:5000/job-applications/jobs/${job_id}`)
+    fetch(`https://job-portal-server-for-recruiter-part3-sand.vercel.app/job-applications/jobs/${job_id}`)
       .then((res) => res.json())
       .then((data) => {
         setApplication(data);
@@ -18,7 +18,7 @@ console.log(e.target.value,id)
 const data ={
     status:e.target.value
 }
- fetch(`http://localhost:5000/job-applications/${id}`,{
+ fetch(`https://job-portal-server-for-recruiter-part3-sand.vercel.app/job-applications/${id}`,{
       method:"PATCH",
       headers:{
           'content-type':'application/json'

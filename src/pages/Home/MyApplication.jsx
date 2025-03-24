@@ -13,12 +13,12 @@ useEffect(()=>{
 
   axiosSecure.get(`/job-application?email=${user?.email}`)
   .then(res=> setUsers(res.data))
-  // axios.get(`http://localhost:5000/job-application?email=${user?.email}`,{withCredentials:true})
+  // axios.get(`https://job-portal-server-for-recruiter-part3-sand.vercel.app/job-application?email=${user?.email}`,{withCredentials:true})
   // .then(res=> {
   //   setUsers(res.data)
   //   console.log(res.data)
   // })
-  // fetch(`http://localhost:5000/job-application?email=${user?.email}`)
+  // fetch(`https://job-portal-server-for-recruiter-part3-sand.vercel.app/job-application?email=${user?.email}`)
   // .then(res=>res.json())
   // .then(data=>{
   //   setUsers(data)
